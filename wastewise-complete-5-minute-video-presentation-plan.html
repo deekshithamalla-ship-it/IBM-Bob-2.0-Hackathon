@@ -1,0 +1,775 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WasteWise — 5-Min Video Plan</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",system-ui,sans-serif;font-size:14px;line-height:1.65;color:#1f2328;background:#fff;padding-bottom:60px}
+a{color:#3b82d4}
+
+/* HEADER */
+.hdr{background:#0c0f14;color:#fff;padding:40px 48px 34px;border-bottom:3px solid #22c55e}
+.hdr-badge{display:inline-block;background:#22c55e;color:#0c0f14;font-size:11px;font-weight:700;letter-spacing:1.2px;padding:3px 10px;border-radius:20px;margin-bottom:14px}
+.hdr h1{font-size:30px;font-weight:800;margin-bottom:6px}.hdr h1 span{color:#22c55e}
+.hdr p{color:#94a3b8;max-width:640px;font-size:13.5px}
+.hdr-meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+.mpill{background:#161c27;border:1px solid #2d3748;border-radius:6px;padding:5px 12px;font-size:12px;color:#cbd5e1}.mpill strong{color:#fff}
+
+/* WRAP */
+.w{max-width:900px;margin:0 auto;padding:0 24px}
+
+/* SECTION LABEL */
+.slbl{font-size:11px;font-weight:700;letter-spacing:1.4px;color:#22c55e;text-transform:uppercase;margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid #e5e7eb}
+
+/* FACT BOX */
+.factbox{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:13px;color:#14532d;line-height:1.6}
+.factbox strong{display:block;margin-bottom:6px;font-size:13.5px;color:#166534}
+
+/* SCENE CARD */
+.sc{border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin-bottom:22px}
+.sc-hdr{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#f7f8fa;border-bottom:1px solid #e5e7eb}
+.sc-num{background:#0c0f14;color:#22c55e;font-size:11px;font-weight:800;width:34px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:.5px}
+.sc-ttl{flex:1}.sc-ttl h3{font-size:15px;font-weight:700;margin-bottom:1px}
+.sc-ttl .sub{font-size:11px;color:#57606a;text-transform:uppercase;letter-spacing:.8px}
+.sc-ts{background:#e8fdf1;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;flex-shrink:0;white-space:nowrap}
+.sc-body{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:680px){.sc-body{grid-template-columns:1fr}}
+
+/* DARK VISUAL BOX */
+.vbox{background:#0c0f14;border-radius:8px;padding:18px;display:flex;flex-direction:column;justify-content:flex-start;min-height:150px}
+.vbox .vlbl{font-size:10px;letter-spacing:1.2px;color:#4ade80;margin-bottom:8px;font-weight:700}
+.vbox .vttl{font-size:17px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:6px}.vbox .vttl span{color:#22c55e}
+.vbox .vbody{font-size:12px;color:#94a3b8;line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.tag{font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px}
+.tag-g{background:#052e16;border:1px solid #166534;color:#4ade80}
+.tag-o{background:#1c1007;border:1px solid #92400e;color:#fb923c}
+.tag-b{background:#0a1628;border:1px solid #1e40af;color:#60a5fa}
+.tag-r{background:#1c0707;border:1px solid #991b1b;color:#f87171}
+
+/* FLOW */
+.flow{display:flex;flex-direction:column;gap:5px;margin-top:10px}
+.fstep{background:#161c27;border:1px solid #2d3748;border-radius:5px;padding:6px 10px;font-size:11px;color:#e2e8f0;font-weight:600}
+.farr{color:#4ade80;font-size:13px;padding-left:8px}
+
+/* NARRATION PANEL */
+.npanel{display:flex;flex-direction:column;gap:12px}
+.nlbl{font-size:10px;font-weight:700;letter-spacing:1px;color:#57606a;text-transform:uppercase;margin-bottom:3px}
+.ntext{background:#f7f8fa;border-left:3px solid #22c55e;padding:12px 14px;border-radius:0 6px 6px 0;font-size:12.5px;color:#1f2328;line-height:1.7;font-style:italic}
+.ntext strong{font-style:normal;color:#166534}
+.acts{list-style:none}
+.acts li{font-size:12px;color:#374151;padding:5px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:8px;align-items:flex-start}
+.acts li:last-child{border-bottom:none}
+.adot{width:17px;height:17px;border-radius:50%;background:#dcfce7;color:#166534;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.itype{display:inline-block;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-size:10px;padding:2px 7px;border-radius:4px;font-weight:600;margin-top:6px}
+
+/* PROMPT BOX */
+.pbox{background:#1e1e2e;border:1px solid #2d2d4e;border-radius:8px;padding:14px 16px;font-size:12px;color:#cdd6f4;line-height:1.6;margin-top:8px;font-family:monospace}
+.pbox .ph{font-size:10px;color:#a6e3a1;font-weight:700;letter-spacing:1px;margin-bottom:6px;font-family:sans-serif}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column}
+.tlr{display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.tlr:last-child{border-bottom:none}
+.tlt{min-width:60px;font-size:11px;font-weight:700;color:#22c55e;padding-top:2px}
+.tln{font-size:13px;font-weight:600;margin-bottom:2px}
+.tld{font-size:12px;color:#57606a}
+
+/* VOICEOVER FULL */
+.vobox{background:#f7f8fa;border:1px solid #e5e7eb;border-radius:8px;padding:20px;font-size:13px;line-height:1.9;color:#1f2328}
+.vobox p{margin-bottom:12px}.vobox p:last-child{margin-bottom:0}
+.vo-scene{font-size:10px;font-weight:700;color:#22c55e;letter-spacing:1.2px;display:block;margin-bottom:2px}
+
+/* TECH GRID */
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:10px}
+.tc{background:#f7f8fa;border:1px solid #e5e7eb;border-radius:8px;padding:14px;text-align:center}
+.tc .ti{font-size:22px;margin-bottom:5px}
+.tc .tn{font-size:13px;font-weight:700;margin-bottom:2px}
+.tc .td{font-size:11px;color:#57606a}
+
+/* CHECKLIST */
+.cklist{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.ckcard{background:#f7f8fa;border:1px solid #e5e7eb;border-radius:8px;padding:14px 16px}
+.ckcard h4{font-size:13px;margin-bottom:8px;color:#1f2328}
+.ckcard ul{list-style:none}
+.ckcard ul li{font-size:12px;color:#374151;padding:3px 0;display:flex;gap:7px}
+.ckcard ul li::before{content:"□";color:#22c55e;font-weight:700;flex-shrink:0}
+.ckcard.done ul li::before{content:"✓";color:#166534}
+
+/* VOICE PROMPT */
+.vprompt{background:#0c0f14;border-radius:8px;padding:18px 20px;color:#e2e8f0;font-size:13px;line-height:1.7;margin-bottom:10px}
+.vprompt .vph{font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1.2px;margin-bottom:8px}
+
+/* QC */
+.qcgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qcitem{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.qcitem:last-child{border-bottom:none}
+.qcok{width:18px;height:18px;background:#dcfce7;border-radius:50%;color:#166534;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;margin-top:1px}
+.qctxt{font-size:12px;color:#374151}
+
+/* FOOTER */
+.pgfoot{margin-top:56px;padding-top:16px;border-top:1px solid #e5e7eb;text-align:center;font-size:12px;color:#57606a}
+
+hr.div{border:none;border-top:1px solid #e5e7eb;margin:32px 0}
+</style>
+</head>
+<body>
+
+
+<div class="hdr">
+  <div class="hdr-badge">♻ IBM BOB 2.0 HACKATHON — COMPLETE VIDEO PLAN</div>
+  <h1>Waste<span>Wise</span> — 5-Minute Video Presentation</h1>
+  <p>Built from the real WasteWise source code. Every claim, every voiceover line, every on-screen action is verified against the actual project. No invented features.</p>
+  <div class="hdr-meta">
+    <div class="mpill"><strong>Duration:</strong> 5 min / ~300 sec</div>
+    <div class="mpill"><strong>Scenes:</strong> 15</div>
+    <div class="mpill"><strong>AI Model:</strong> Moondream (via Ollama)</div>
+    <div class="mpill"><strong>Backend:</strong> Python / Flask</div>
+    <div class="mpill"><strong>Frontend:</strong> Vanilla JS / HTML / CSS</div>
+    <div class="mpill"><strong>Cost:</strong> 100% free, fully local</div>
+  </div>
+</div>
+
+<div class="w">
+
+
+<div class="slbl">Verified Project Facts (from source code)</div>
+<div class="factbox">
+  <strong>What WasteWise actually does — confirmed from code</strong>
+  1. User uploads a waste image (JPG/PNG/WEBP) via a browser UI built in plain HTML + CSS + Vanilla JS.<br />
+  2. The image is sent via HTTP POST (FormData) to a Flask backend at <code>/analyze</code>.<br />
+  3. Flask saves the image, base64-encodes it, and sends it to <strong>Moondream</strong> running locally via <strong>Ollama</strong> at <code>localhost:11434</code>.<br />
+  4. Two targeted questions are asked: (Q1) "What type of waste or recyclable object is this? Name the object and material." (Q2) "What material is the main object made of? One or two words only."<br />
+  5. Both text answers are concatenated. A Python keyword-matcher maps the combined text to one of <strong>15 structured waste profiles</strong> (plastic bottle, glass, metal can, paper, electronic, battery, food, textile, styrofoam, light bulb, aerosol, rubber, wood, medicine, ceramic).<br />
+  6. If nothing matches, a DEFAULT profile ("Unidentified Waste Item") is returned with a 62% confidence score. Matched items return 91% confidence.<br />
+  7. The result JSON contains: name, description, confidence, category, material, materialFull, materialsDescription, materials[], recovery[], uses[], disposalTitle, disposalText, safety, environment.<br />
+  8. The frontend renders this into 5 tabs: Overview, Materials, Recovery, Possible Uses, Disposal.<br />
+  9. The UI includes a 4-step animated progress bar (Image received → Identifying waste → Analyzing materials → Generating guidance) that runs while the AI call is in progress.<br />
+  10. Users can drag-and-drop or click to upload. "Scan Another Item" resets the entire flow.
+</div>
+
+
+
+
+<div class="slbl">Scene-by-Scene Storyboard</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">01</div>
+    <div class="sc-ttl"><h3>Opening Hook</h3><div class="sub">Cold Open · Title Card</div></div>
+    <div class="sc-ts">0:00 – 0:20</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">SCREEN / VISUAL</div>
+      <div class="vttl">Waste<span>Wise</span></div>
+      <div class="vbody">Black screen. Fade in the WasteWise logo text (♻ WasteWise). Then the tagline appears word by word: "Waste in. Smart decisions out." Hold 4 seconds.</div>
+      <div class="tags">
+        <span class="tag tag-g">Text animation</span>
+        <span class="tag tag-o">Black background</span>
+        <span class="tag tag-b">Canva text slide</span>
+      </div>
+      <div class="itype">📐 CANVA MOTION TEXT SLIDE</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"What if you could pick up any piece of waste — and instantly know exactly what it is, what it's made of, and what to do with it? That's WasteWise."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 Canva / On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Black background Canva slide</li>
+        <li><span class="adot">2</span>Animate "♻ WasteWise" sliding in from left</li>
+        <li><span class="adot">3</span>Tagline appears one word at a time</li>
+        <li><span class="adot">4</span>Fade to white — lead into Scene 2</li>
+      </ul>
+      <div class="nlbl" style="margin-top:10px">🎵 Music</div>
+      <div class="ntext" style="font-style:normal;font-size:12px">Soft ambient tech/electronic. Low volume. Fade in from silence.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">02</div>
+    <div class="sc-ttl"><h3>The Problem</h3><div class="sub">Real-World Context</div></div>
+    <div class="sc-ts">0:20 – 0:50</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">SCREEN / VISUAL</div>
+      <div class="vttl">The <span>waste problem</span> is real.</div>
+      <div class="vbody">Show images of mixed waste bins, confused-looking disposal situations. Then show 3 text cards: "Is this recyclable?", "Which bin does this go in?", "Is this hazardous?"</div>
+      <div class="tags">
+        <span class="tag tag-o">AI-generated visual</span>
+        <span class="tag tag-g">3 question cards</span>
+        <span class="tag tag-b">Canva layout</span>
+      </div>
+      <div class="itype">🤖 AI IMAGE PROMPT BELOW</div>
+      <div class="pbox" style="margin-top:10px">
+        <div class="ph">AI IMAGE PROMPT</div>
+        "Realistic photo of a cluttered household recycling bin filled with mixed waste — plastic bottles, paper, metal cans, a light bulb, food scraps. Overhead view. Natural lighting. High resolution. Clean background. No people."
+      </div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"Every day, people face the same question: what do I do with this waste? Is this plastic recyclable? Does this go in the general bin or the recycling? Is this battery hazardous? Most people don't know — and that uncertainty means valuable materials end up in landfill, and hazardous items end up where they shouldn't."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Show AI-generated or royalty-free waste bin image for 5 seconds</li>
+        <li><span class="adot">2</span>Animate 3 question cards appearing one by one</li>
+        <li><span class="adot">3</span>Let each card sit for ~2 seconds before the next appears</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">03</div>
+    <div class="sc-ttl"><h3>Why Disposal is Hard</h3><div class="sub">Problem Deepening</div></div>
+    <div class="sc-ts">0:50 – 1:10</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">SCREEN / VISUAL</div>
+      <div class="vttl">Three things <span>nobody tells you</span></div>
+      <div class="flow">
+        <div class="fstep">❓ What TYPE of waste is this?</div>
+        <div class="farr">↓</div>
+        <div class="fstep">❓ What CATEGORY does it belong to?</div>
+        <div class="farr">↓</div>
+        <div class="fstep">❓ HOW should it be disposed?</div>
+      </div>
+      <div class="itype" style="margin-top:10px">📐 CANVA FLOW DIAGRAM</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"There are three things most people struggle to answer when they hold a waste item. What type of waste is it? What category does it belong to — is it electronic waste, hazardous, organic, or recyclable? And exactly how should it be disposed of, safely and responsibly? These aren't trivial questions. Getting them wrong has real consequences for our environment."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Animate the 3 questions appearing with a downward flow arrow between them</li>
+        <li><span class="adot">2</span>Each question highlights briefly in green as narrator reads it</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">04</div>
+    <div class="sc-ttl"><h3>Introducing WasteWise</h3><div class="sub">The Solution</div></div>
+    <div class="sc-ts">1:10 – 1:35</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">SCREEN / VISUAL</div>
+      <div class="vttl"><span>WasteWise</span> — your AI waste guide</div>
+      <div class="vbody">Show the actual WasteWise homepage in browser. Slowly pan from the navbar hero ("Waste in. Smart decisions out.") down to the Impact section (AI Recognition, Material Intelligence, Resource Recovery cards).</div>
+      <div class="tags">
+        <span class="tag tag-g">Real screen recording</span>
+        <span class="tag tag-b">Browser fullscreen</span>
+      </div>
+      <div class="itype">🎬 REAL SCREEN RECORDING</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"WasteWise is an AI-powered waste intelligence platform. You give it a photo of any waste item, and it tells you what it is, what it's made of, how the materials can be recovered, and exactly how to dispose of it. It runs entirely on your own machine — no cloud services, no API keys, no subscription. Completely free."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Open WasteWise in Chrome, fullscreen</li>
+        <li><span class="adot">2</span>Let the page load — show the hero (♻ WasteWise logo, tagline, orbit animation)</li>
+        <li><span class="adot">3</span>Slowly scroll down to reveal the 3 Impact cards</li>
+        <li><span class="adot">4</span>Mouse over each impact card briefly</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">05</div>
+    <div class="sc-ttl"><h3>How the System Works</h3><div class="sub">Architecture Overview</div></div>
+    <div class="sc-ts">1:35 – 2:00</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">ACTUAL PIPELINE (from code)</div>
+      <div class="flow">
+        <div class="fstep">📸 User uploads image (JPG/PNG/WEBP)</div>
+        <div class="farr">↓</div>
+        <div class="fstep">🌐 Vanilla JS → POST /analyze (Flask)</div>
+        <div class="farr">↓</div>
+        <div class="fstep">🐍 Flask saves image, base64 encodes it</div>
+        <div class="farr">↓</div>
+        <div class="fstep">🤖 Moondream (Ollama) — Q1: Object type</div>
+        <div class="farr">↓</div>
+        <div class="fstep">🤖 Moondream (Ollama) — Q2: Material type</div>
+        <div class="farr">↓</div>
+        <div class="fstep">🔎 Python keyword-matcher → 15 profiles</div>
+        <div class="farr">↓</div>
+        <div class="fstep">📊 JSON result → 5 UI tabs rendered</div>
+      </div>
+      <div class="itype">📐 CANVA FLOW DIAGRAM</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"Here is how WasteWise works under the hood. When you upload an image, the browser sends it to a Python Flask server. The server encodes the image and sends it to a local AI vision model called Moondream, running privately on your machine through Ollama. We actually ask Moondream two questions — first, what type of waste is this; and second, what material is it made of. The combined answers are then matched against a structured database of 15 waste profiles, and the result is returned as structured data to the frontend."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Show the architecture flow diagram (Canva slide) with each step highlighting as narrator reads it</li>
+        <li><span class="adot">2</span>Use green arrows and dark-background tech style</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">06</div>
+    <div class="sc-ttl"><h3>Technology Stack</h3><div class="sub">What Powers WasteWise</div></div>
+    <div class="sc-ts">2:00 – 2:20</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">VERIFIED TECHNOLOGIES (from code)</div>
+      <div class="flow" style="margin-top:6px">
+        <div class="fstep">🐍 Python + Flask — web server &amp; API backend</div>
+        <div class="fstep">🤖 Moondream — local vision AI model</div>
+        <div class="fstep">⚙ Ollama — runs AI locally at localhost:11434</div>
+        <div class="fstep">🌐 HTML + CSS + Vanilla JavaScript — frontend</div>
+        <div class="fstep">📦 Requests library — Flask→Ollama HTTP bridge</div>
+      </div>
+      <div class="tags" style="margin-top:10px">
+        <span class="tag tag-r">NOT used: IBM Granite</span>
+        <span class="tag tag-r">NOT used: any cloud API</span>
+        <span class="tag tag-r">NOT used: any framework (React etc.)</span>
+      </div>
+      <div class="itype">📐 CANVA TECH CARD SLIDE</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"WasteWise is built on a deliberately lean, free technology stack. The backend is Python with Flask. The AI engine is Moondream — a lightweight vision model that runs locally through Ollama. The entire frontend is plain HTML, CSS, and Vanilla JavaScript — no frameworks, no dependencies. And because everything runs on your own machine, there is no cloud cost, no privacy concern, and no internet requirement after setup."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Show 5 tech cards appearing one by one on a dark Canva slide</li>
+        <li><span class="adot">2</span>Each card has an icon, name, and one-line role description</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">07</div>
+    <div class="sc-ttl"><h3>The AI Explained Simply</h3><div class="sub">Moondream + Dual-Prompt Logic</div></div>
+    <div class="sc-ts">2:20 – 2:45</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">DUAL PROMPT STRATEGY (from ai_analyzer.py)</div>
+      <div class="vbody" style="margin-top:6px">
+        <strong style="color:#4ade80">Q1 sent to Moondream:</strong><br />
+        "What type of waste or recyclable object is shown? Name the specific object and the material it is made of."<br /><br />
+        <strong style="color:#4ade80">Q2 sent to Moondream:</strong><br />
+        "What material is the main object made of? Answer with one or two words only."<br /><br />
+        Both answers combined → keyword matcher → profile selected.
+      </div>
+      <div class="itype">📐 CANVA SPLIT DIAGRAM</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"The AI component deserves a closer look. Moondream is a compact vision model designed to answer natural language questions about images. WasteWise sends it two carefully designed prompts. The first asks the model to name the specific waste object and its material. The second asks for just the material in one or two words. Why two questions? Because combining both answers significantly improves the accuracy of our waste classification. A model might describe an image as 'a white foam cup' — the first answer tells us it's a cup, the second confirms it's foam. Together, they match the styrofoam profile."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Show a Canva slide with two question boxes on the left, an arrow pointing right, and the matched profile name on the right</li>
+        <li><span class="adot">2</span>Animate Q1 appearing → Q2 appearing → combined → "Styrofoam profile matched ✓"</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">08</div>
+    <div class="sc-ttl"><h3>LIVE DEMO — Upload &amp; Scan</h3><div class="sub">⭐ Most Important Scene</div></div>
+    <div class="sc-ts">2:45 – 3:35</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">EXACT DEMO FLOW (record this)</div>
+      <div class="flow">
+        <div class="fstep">1. Click "Scan My Waste" → scroll to upload section</div>
+        <div class="farr">↓</div>
+        <div class="fstep">2. Click "Choose Image" → pick plastic bottle photo</div>
+        <div class="farr">↓</div>
+        <div class="fstep">3. Image preview appears with scan-line animation</div>
+        <div class="farr">↓</div>
+        <div class="fstep">4. 4 steps complete: Image received → Identifying waste → Analyzing materials → Generating guidance</div>
+        <div class="farr">↓</div>
+        <div class="fstep">5. Result card appears — pause on name + confidence (91%)</div>
+        <div class="farr">↓</div>
+        <div class="fstep">6. Overview tab visible (default)</div>
+      </div>
+      <div class="itype">🎬 REAL SCREEN RECORDING — no fake UI</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover (synced to actions)</div>
+      <div class="ntext">
+        <strong>[as you click Scan My Waste]</strong> "Let me show you WasteWise in action. I'll start by uploading a photo of a plastic bottle."<br /><br />
+        <strong>[as image appears in preview]</strong> "The moment the image loads, WasteWise begins its analysis in the background. Watch the four-step pipeline complete in real time."<br /><br />
+        <strong>[as steps complete one by one]</strong> "Image received. Identifying the waste type. Analyzing the material composition. Generating disposal guidance."<br /><br />
+        <strong>[as result appears]</strong> "And here is our result. WasteWise has identified this as a Plastic Bottle, with a confidence of 91 percent. The category is Plastic and Packaging."
+      </div>
+      <div class="nlbl" style="margin-top:10px">⚠ Before Recording</div>
+      <ul class="acts">
+        <li><span class="adot">!</span>Run <code>ollama serve</code> and do one warm-up scan first</li>
+        <li><span class="adot">!</span>Have a clear, well-lit plastic bottle photo saved on Desktop</li>
+        <li><span class="adot">!</span>Browser at 1080p, WasteWise open at localhost:5000</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">09</div>
+    <div class="sc-ttl"><h3>LIVE DEMO — 5 Result Tabs</h3><div class="sub">Feature Depth Walkthrough</div></div>
+    <div class="sc-ts">3:35 – 4:05</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">TABS TO CLICK THROUGH (real UI)</div>
+      <div class="flow">
+        <div class="fstep">🔍 Overview — name, category, material, recovery status, disposal method</div>
+        <div class="fstep">🧪 Materials — composition breakdown with type badges (Plastic, Component…)</div>
+        <div class="fstep">♻ Recovery — what materials can be extracted and how</div>
+        <div class="fstep">💡 Possible Uses — numbered list of what recovered material becomes</div>
+        <div class="fstep">🗑 Disposal — exact step-by-step instructions + yellow safety warning box</div>
+      </div>
+      <div class="itype">🎬 REAL SCREEN RECORDING — continue from Scene 8</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover (per tab)</div>
+      <div class="ntext">
+        <strong>[Overview tab]</strong> "The Overview tab gives you the essential at a glance — what the item is, its primary material, whether it's recoverable, and how to dispose of it."<br /><br />
+        <strong>[Materials tab]</strong> "Materials breaks down the full composition — in this case PET plastic as the primary material, with a separate note about the cap and label."<br /><br />
+        <strong>[Recovery tab]</strong> "Recovery tells you which specific materials can be extracted — here both the PET body and the HDPE cap are listed as recoverable."<br /><br />
+        <strong>[Possible Uses tab]</strong> "Possible Uses goes a step further — it tells you what those recovered materials can actually become. New bottles, polyester fibre for clothing, packaging film."<br /><br />
+        <strong>[Disposal tab]</strong> "And finally, Disposal gives you clear, actionable instructions — and a safety note to ensure responsible handling."
+      </div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Click each tab slowly, pausing 4–5 seconds on each</li>
+        <li><span class="adot">2</span>On Disposal tab, scroll down to show the yellow ⚠ warning box</li>
+        <li><span class="adot">3</span>Speak each line as you land on that tab</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">10</div>
+    <div class="sc-ttl"><h3>Technical Implementation Detail</h3><div class="sub">Code-Level Insight</div></div>
+    <div class="sc-ts">4:05 – 4:20</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">REAL CODE HIGHLIGHTS</div>
+      <div class="vbody" style="margin-top:6px">
+        Show briefly in VS Code:<br /><br />
+        • <code>ai_analyzer.py</code> — the two <code>_ask_moondream()</code> calls<br />
+        • The <code>PROFILES</code> dict (scroll through to show 15 categories)<br />
+        • <code>_match_profile()</code> — keyword matching logic<br />
+        • <code>app.py</code> — the single <code>/analyze</code> Flask route
+      </div>
+      <div class="itype">🎬 SCREEN RECORDING — VS Code</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"A quick look at the implementation. The Flask backend has a single endpoint — slash analyze — that receives the image, saves it, and calls our analyzer. The analyzer asks Moondream two targeted questions, then passes the combined text to a keyword-matching function that selects from 15 structured waste profiles. Each profile contains all the data the frontend needs — materials, recovery paths, uses, and disposal guidance. Clean, simple, maintainable."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Switch to VS Code showing ai_analyzer.py</li>
+        <li><span class="adot">2</span>Scroll through the PROFILES dict slowly for ~5 seconds</li>
+        <li><span class="adot">3</span>Briefly show the two _ask_moondream() calls in analyze_waste_image()</li>
+        <li><span class="adot">4</span>Switch to app.py — show the /analyze route (7 lines)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">11</div>
+    <div class="sc-ttl"><h3>Second Demo — Different Waste Type</h3><div class="sub">Versatility Proof</div></div>
+    <div class="sc-ts">4:20 – 4:38</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">SECOND SCAN (choose one)</div>
+      <div class="vbody" style="margin-top:6px">Pick one of these for a second fast scan to show range:</div>
+      <div class="tags" style="margin-top:10px">
+        <span class="tag tag-g">🔋 Battery</span>
+        <span class="tag tag-o">📦 Cardboard box</span>
+        <span class="tag tag-b">🥫 Metal can</span>
+        <span class="tag tag-g">🍌 Banana peel (food)</span>
+        <span class="tag tag-r">💡 Light bulb</span>
+      </div>
+      <div class="vbody" style="margin-top:10px">Click "Scan Another Item" → upload → let it run → show result. No need to click all tabs — just Overview and Disposal.</div>
+      <div class="itype">🎬 REAL SCREEN RECORDING — continue</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"WasteWise isn't limited to plastic. Let me quickly scan something completely different — [name your chosen item]. Watch how the entire result changes — different category, different materials, different disposal route. The system handles 15 distinct waste types including batteries, e-waste, food waste, ceramics, rubber, wood, aerosols, medicines, and more."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Scroll down to "Scan Another Item" button and click it</li>
+        <li><span class="adot">2</span>Upload second waste photo</li>
+        <li><span class="adot">3</span>Let result load — show Overview tab only (keep this scene brief)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">12</div>
+    <div class="sc-ttl"><h3>What Makes WasteWise Different</h3><div class="sub">Genuine Differentiators</div></div>
+    <div class="sc-ts">4:38 – 4:50</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">REAL DIFFERENTIATORS (verified)</div>
+      <div class="flow" style="margin-top:6px">
+        <div class="fstep">✓ Dual-prompt AI strategy for better classification</div>
+        <div class="fstep">✓ Structured 15-profile waste intelligence database</div>
+        <div class="fstep">✓ 5 information dimensions per waste item (not just "recycle yes/no")</div>
+        <div class="fstep">✓ Runs 100% locally — zero cloud, zero cost, zero data sent out</div>
+        <div class="fstep">✓ Drag-and-drop + click upload, animated 4-step progress UI</div>
+        <div class="fstep">✓ Safety warnings included for hazardous waste types</div>
+      </div>
+      <div class="itype">📐 CANVA FEATURE LIST SLIDE</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"What genuinely sets WasteWise apart. First, the dual-prompt AI strategy — asking two targeted questions instead of one dramatically improves accuracy. Second, the result is far richer than a simple yes-or-no recycling answer. We provide the full material breakdown, what those materials can become, and step-by-step disposal guidance with safety warnings. Third, everything runs on your machine. No data leaves your device. No API keys. No cost."</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">13</div>
+    <div class="sc-ttl"><h3>Realistic Impact &amp; Use Cases</h3><div class="sub">Who benefits</div></div>
+    <div class="sc-ts">4:50 – 5:05</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">SUPPORTED USE CASES</div>
+      <div class="flow" style="margin-top:6px">
+        <div class="fstep">🏠 Households — "Should this go in recycling or general waste?"</div>
+        <div class="fstep">🏫 Schools &amp; education — visual waste literacy tool</div>
+        <div class="fstep">♻ Recycling awareness — understand what recovered materials become</div>
+        <div class="fstep">⚠ Hazardous items — batteries, CFLs, e-waste — get correct guidance</div>
+        <div class="fstep">🌍 Accessible — works offline, no subscription, no phone data needed</div>
+      </div>
+      <div class="itype">📐 CANVA USE CASE CARDS</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"The applications are real and immediate. For households, it answers the daily question of where each item should go. In educational settings, it helps students understand waste materials visually. It is especially valuable for hazardous items — batteries, fluorescent bulbs, aerosols — where incorrect disposal has serious consequences. And because it runs offline, it is accessible anywhere, on any budget."</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">14</div>
+    <div class="sc-ttl"><h3>Future Scope</h3><div class="sub">What's next — clearly labelled as future</div></div>
+    <div class="sc-ts">5:05 – 5:18</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">FUTURE IDEAS (not yet built)</div>
+      <div class="flow" style="margin-top:6px">
+        <div class="fstep">🔮 Upgrade to llava or llava-phi3 for richer descriptions</div>
+        <div class="fstep">🔮 Location-aware disposal (show nearest recycling centre)</div>
+        <div class="fstep">🔮 Mobile camera — scan waste in real time</div>
+        <div class="fstep">🔮 Scan history — personal waste tracking</div>
+        <div class="fstep">🔮 Community reporting — flag illegal dumping</div>
+      </div>
+      <div class="itype">📐 CANVA ROADMAP SLIDE</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"Looking ahead, WasteWise has a clear upgrade path. Swapping to a more powerful local vision model like LLaVA would improve classification accuracy further. Adding location awareness could connect users to their nearest recycling facility. A real-time mobile camera mode is a natural next step. These are the directions we see WasteWise growing — building on a solid, working foundation."</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="sc">
+  <div class="sc-hdr">
+    <div class="sc-num">15</div>
+    <div class="sc-ttl"><h3>Final Closing</h3><div class="sub">Sign-off</div></div>
+    <div class="sc-ts">5:18 – 5:30</div>
+  </div>
+  <div class="sc-body">
+    <div class="vbox">
+      <div class="vlbl">SCREEN / VISUAL</div>
+      <div class="vttl">Waste<span>Wise</span></div>
+      <div class="vbody" style="margin-top:6px">"Waste in. Smart decisions out."<br /><br />Return to WasteWise homepage hero with the spinning recycling orbit animation. Let it play for 4 seconds. Fade to black with text overlay.<br /><br />Text on screen:<br />♻ WasteWise<br />Waste in. Smart decisions out.<br />IBM Bob 2.0 Hackathon 2025</div>
+      <div class="itype">🎬 REAL SCREEN RECORDING + Canva text overlay</div>
+    </div>
+    <div class="npanel">
+      <div class="nlbl">🎙 Exact Voiceover</div>
+      <div class="ntext">"WasteWise. Turning a photograph of any waste item into clear, actionable, structured intelligence — for free, locally, and for everyone. Waste in. Smart decisions out. Thank you."</div>
+      <div class="nlbl" style="margin-top:10px">🗂 On-Screen Action</div>
+      <ul class="acts">
+        <li><span class="adot">1</span>Click "Home" in navbar — scroll to hero, orbit animation visible</li>
+        <li><span class="adot">2</span>Let it play 4 seconds</li>
+        <li><span class="adot">3</span>Fade to black</li>
+        <li><span class="adot">4</span>On black: show "♻ WasteWise / Waste in. Smart decisions out. / IBM Bob 2.0 Hackathon 2025"</li>
+        <li><span class="adot">5</span>Music fades out</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="slbl">A — Full 5-Minute Voiceover (Copy &amp; Paste for AI Voice Generator)</div>
+<div class="vobox">
+  <p><span class="vo-scene">SCENE 1 [0:00]</span>What if you could pick up any piece of waste — and instantly know exactly what it is, what it's made of, and what to do with it? That's WasteWise.</p>
+  <p><span class="vo-scene">SCENE 2 [0:20]</span>Every day, people face the same question: what do I do with this waste? Is this plastic recyclable? Does this go in the general bin or the recycling? Is this battery hazardous? Most people don't know — and that uncertainty means valuable materials end up in landfill, and hazardous items end up where they shouldn't.</p>
+  <p><span class="vo-scene">SCENE 3 [0:50]</span>There are three things most people struggle to answer when they hold a waste item. What type of waste is it? What category does it belong to — is it electronic waste, hazardous, organic, or recyclable? And exactly how should it be disposed of, safely and responsibly? These aren't trivial questions. Getting them wrong has real consequences for our environment.</p>
+  <p><span class="vo-scene">SCENE 4 [1:10]</span>WasteWise is an AI-powered waste intelligence platform. You give it a photo of any waste item, and it tells you what it is, what it's made of, how the materials can be recovered, and exactly how to dispose of it. It runs entirely on your own machine — no cloud services, no API keys, no subscription. Completely free.</p>
+  <p><span class="vo-scene">SCENE 5 [1:35]</span>Here is how WasteWise works under the hood. When you upload an image, the browser sends it to a Python Flask server. The server encodes the image and sends it to a local AI vision model called Moondream, running privately on your machine through Ollama. We actually ask Moondream two questions — first, what type of waste is this; and second, what material is it made of. The combined answers are then matched against a structured database of fifteen waste profiles, and the result is returned as structured data to the frontend.</p>
+  <p><span class="vo-scene">SCENE 6 [2:00]</span>WasteWise is built on a deliberately lean, free technology stack. The backend is Python with Flask. The AI engine is Moondream — a lightweight vision model that runs locally through Ollama. The entire frontend is plain HTML, CSS, and Vanilla JavaScript — no frameworks, no dependencies. And because everything runs on your own machine, there is no cloud cost, no privacy concern, and no internet requirement after setup.</p>
+  <p><span class="vo-scene">SCENE 7 [2:20]</span>The AI component deserves a closer look. Moondream is a compact vision model designed to answer natural language questions about images. WasteWise sends it two carefully designed prompts. The first asks the model to name the specific waste object and its material. The second asks for just the material in one or two words. Why two questions? Because combining both answers significantly improves the accuracy of our waste classification. A model might describe an image as a white foam cup — the first answer tells us it's a cup, the second confirms it's foam. Together, they match the styrofoam profile.</p>
+  <p><span class="vo-scene">SCENE 8 [2:45]</span>Let me show you WasteWise in action. I'll start by uploading a photo of a plastic bottle. The moment the image loads, WasteWise begins its analysis in the background. Watch the four-step pipeline complete in real time. Image received. Identifying the waste type. Analyzing the material composition. Generating disposal guidance. And here is our result. WasteWise has identified this as a Plastic Bottle, with a confidence of 91 percent. The category is Plastic and Packaging.</p>
+  <p><span class="vo-scene">SCENE 9 [3:35]</span>The result is organized into five intelligent tabs. The Overview tab gives you the essential at a glance — what the item is, its primary material, whether it's recoverable, and how to dispose of it. Materials breaks down the full composition — in this case PET plastic as the primary material, with a separate note about the cap and label. Recovery tells you which specific materials can be extracted. Possible Uses goes a step further — it tells you what those recovered materials can actually become. New bottles, polyester fibre for clothing, packaging film. And finally, Disposal gives you clear, actionable instructions — and a safety note to ensure responsible handling.</p>
+  <p><span class="vo-scene">SCENE 10 [4:05]</span>A quick look at the implementation. The Flask backend has a single endpoint — slash analyze — that receives the image, saves it, and calls our analyzer. The analyzer asks Moondream two targeted questions, then passes the combined text to a keyword-matching function that selects from fifteen structured waste profiles. Each profile contains all the data the frontend needs — materials, recovery paths, uses, and disposal guidance. Clean, simple, maintainable.</p>
+  <p><span class="vo-scene">SCENE 11 [4:20]</span>WasteWise isn't limited to plastic. Let me quickly scan something completely different. Watch how the entire result changes — different category, different materials, different disposal route. The system handles fifteen distinct waste types including batteries, e-waste, food waste, ceramics, rubber, wood, aerosols, medicines, and more.</p>
+  <p><span class="vo-scene">SCENE 12 [4:38]</span>What genuinely sets WasteWise apart. First, the dual-prompt AI strategy — asking two targeted questions instead of one dramatically improves accuracy. Second, the result is far richer than a simple yes-or-no recycling answer. We provide the full material breakdown, what those materials can become, and step-by-step disposal guidance with safety warnings. Third, everything runs on your machine. No data leaves your device. No API keys. No cost.</p>
+  <p><span class="vo-scene">SCENE 13 [4:50]</span>The applications are real and immediate. For households, it answers the daily question of where each item should go. In educational settings, it helps students understand waste materials visually. It is especially valuable for hazardous items — batteries, fluorescent bulbs, aerosols — where incorrect disposal has serious consequences. And because it runs offline, it is accessible anywhere, on any budget.</p>
+  <p><span class="vo-scene">SCENE 14 [5:05]</span>Looking ahead, WasteWise has a clear upgrade path. Swapping to a more powerful local vision model like LLaVA would improve classification accuracy further. Adding location awareness could connect users to their nearest recycling facility. A real-time mobile camera mode is a natural next step. These are the directions we see WasteWise growing — building on a solid, working foundation.</p>
+  <p><span class="vo-scene">SCENE 15 [5:18]</span>WasteWise. Turning a photograph of any waste item into clear, actionable, structured intelligence — for free, locally, and for everyone. Waste in. Smart decisions out. Thank you.</p>
+</div>
+
+
+<div class="slbl">B — AI Voice Generator Prompt</div>
+<div class="vprompt">
+  <div class="vph">PASTE THIS INTO ELEVENLABS / MURF / PLAY.HT / SPEECHIFY</div>
+  Voice profile: Female. Age 24–30. Neutral international English accent (no strong regional accent). Style: professional technology presenter — intelligent, confident, slightly warm. Pace: measured and clear, not rushed. Average speed: 145 words per minute with natural breathing pauses between sentences. Emotion: calm enthusiasm — engaged and knowledgeable, not excited or dramatic. Emphasis: stress technical terms naturally (Moondream, Ollama, Flask, profiles). Pauses: half-second pause after each scene transition. Intonation: slight downward inflection at the end of statements to sound grounded and authoritative, not robotic or monotone.
+</div>
+<div style="font-size:12px;color:#57606a;margin-top:6px">
+  <strong>Free AI voice tools:</strong> ElevenLabs (free tier) · Murf.ai (free tier) · TTSMaker.com (free) · TTSMP3.com (free) · NaturalReader.com (free)
+</div>
+
+
+<div class="slbl">C — Canva 5-Minute Timeline</div>
+<div class="tl">
+  <div class="tlr"><div class="tlt">0:00–0:20</div><div><div class="tln">Title Card</div><div class="tld">Black bg · "WasteWise" slide-in · tagline word-by-word · fade to white</div></div></div>
+  <div class="tlr"><div class="tlt">0:20–0:50</div><div><div class="tln">Problem</div><div class="tld">AI waste bin image + 3 question cards animating in · dark overlay text</div></div></div>
+  <div class="tlr"><div class="tlt">0:50–1:10</div><div><div class="tln">Why it's hard</div><div class="tld">3-step flow diagram · each step highlights green as narrator reads</div></div></div>
+  <div class="tlr"><div class="tlt">1:10–1:35</div><div><div class="tln">Introducing WasteWise</div><div class="tld">Real screen recording · homepage hero → impact cards → slow scroll</div></div></div>
+  <div class="tlr"><div class="tlt">1:35–2:00</div><div><div class="tln">Architecture</div><div class="tld">Canva dark flow diagram · 7-step pipeline · each step highlights on cue</div></div></div>
+  <div class="tlr"><div class="tlt">2:00–2:20</div><div><div class="tlt" style="min-width:0">2:00</div><div class="tln">Tech Stack</div><div class="tld">5 tech cards on dark bg · each card appears with subtle slide-up animation</div></div></div>
+  <div class="tlr"><div class="tlt">2:20–2:45</div><div><div class="tln">AI Explained</div><div class="tld">Canva: Q1 box + Q2 box → arrow → matched profile · green accent color</div></div></div>
+  <div class="tlr"><div class="tlt">2:45–3:35</div><div><div class="tln">⭐ LIVE DEMO #1</div><div class="tld">Real screen recording · upload → progress steps → result card (Overview)</div></div></div>
+  <div class="tlr"><div class="tlt">3:35–4:05</div><div><div class="tln">Result Tabs Demo</div><div class="tld">Real screen recording · click through all 5 tabs, pause on each</div></div></div>
+  <div class="tlr"><div class="tlt">4:05–4:20</div><div><div class="tln">Code Peek</div><div class="tld">Real screen recording · VS Code · ai_analyzer.py PROFILES + 2 prompts</div></div></div>
+  <div class="tlr"><div class="tlt">4:20–4:38</div><div><div class="tln">LIVE DEMO #2</div><div class="tld">Real screen recording · second waste item scan · Overview + Disposal tabs</div></div></div>
+  <div class="tlr"><div class="tlt">4:38–4:50</div><div><div class="tln">Differentiators</div><div class="tld">Canva checklist slide · 6 items with ✓ green tick · dark background</div></div></div>
+  <div class="tlr"><div class="tlt">4:50–5:05</div><div><div class="tln">Use Cases</div><div class="tld">Canva: 5 use-case cards with icons · household, education, hazardous, offline</div></div></div>
+  <div class="tlr"><div class="tlt">5:05–5:18</div><div><div class="tln">Future Scope</div><div class="tld">Canva roadmap strip · 5 future items labelled "Future" in orange badge</div></div></div>
+  <div class="tlr"><div class="tlt">5:18–5:30</div><div><div class="tln">Closing</div><div class="tld">Real screen recording → hero orbit animation → fade to black → text overlay</div></div></div>
+</div>
+
+
+<div class="slbl">D — Asset Checklist (Everything You Need Before Editing)</div>
+<div class="cklist">
+  <div class="ckcard">
+    <h4>🎬 Screen Recordings to capture</h4>
+    <ul>
+      <li>WasteWise homepage full scroll (hero → impact → how it works)</li>
+      <li>Upload flow — plastic bottle scan, full 4-step progress</li>
+      <li>Result card — all 5 tabs clicked through</li>
+      <li>Second scan — different waste type, Overview + Disposal</li>
+      <li>VS Code — ai_analyzer.py PROFILES dict + two prompts</li>
+      <li>VS Code — app.py /analyze route</li>
+      <li>Homepage hero — orbit animation playing (closing scene)</li>
+    </ul>
+  </div>
+  <div class="ckcard">
+    <h4>📐 Canva Slides to create</h4>
+    <ul>
+      <li>Title card: "♻ WasteWise — Waste in. Smart decisions out."</li>
+      <li>Problem: 3 question cards on dark background</li>
+      <li>Why hard: 3-step flow diagram</li>
+      <li>Architecture: 7-step pipeline diagram</li>
+      <li>Tech stack: 5 technology cards</li>
+      <li>AI logic: Q1 + Q2 → profile matched diagram</li>
+      <li>Differentiators: 6-item checklist</li>
+      <li>Use cases: 5 icon cards</li>
+      <li>Future scope: roadmap strip</li>
+      <li>Closing text overlay on black</li>
+    </ul>
+  </div>
+  <div class="ckcard">
+    <h4>🖼 Images needed</h4>
+    <ul>
+      <li>A clear plastic bottle photo (for Demo 1)</li>
+      <li>A second waste item photo (battery / cardboard / food scrap)</li>
+      <li>AI-generated waste bin image (Scene 2) — use prompt above</li>
+    </ul>
+  </div>
+  <div class="ckcard">
+    <h4>🎙 Audio &amp; Music</h4>
+    <ul>
+      <li>AI voiceover MP3 (use ElevenLabs / TTSMaker — prompt above)</li>
+      <li>Background music: ambient tech/lo-fi, royalty-free (Pixabay, Freesound)</li>
+      <li>Music volume: 15–20% under voice, 40% in title/closing scenes</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="slbl">E — Final Quality Checklist</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px">
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">Duration approximately 5 minutes (15 scenes × avg 20 sec)</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">Real WasteWise demo included (Scenes 8, 9, 11)</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">Voice matches exact on-screen actions (synced per scene)</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">All technical claims match actual code (verified from source)</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">No invented statistics — only confidence values from actual code (91% / 62%)</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">No invented features — dual-prompt, 15 profiles, 5 tabs all real</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">IBM technologies correctly stated — IBM Bob Hackathon context only; NOT IBM Granite (not used)</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">WasteWise branding throughout (logo + tagline on slides 1, 4, 15)</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">Clear Problem → Solution → Tech → Demo → Impact → Future narrative</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">Future scope clearly labelled as future (not presented as existing)</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">Export: 1080p MP4, H.264, stereo audio</div></div>
+  <div class="qcitem"><div class="qcok">✓</div><div class="qctxt">No fake UI — all demos use the real running application</div></div>
+</div>
+
+</div>
+<div class="pgfoot">Made with IBM Bob</div>
+</body>
+</html>

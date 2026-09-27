@@ -1,0 +1,297 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WasteWise – PPT Reference</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", system-ui, sans-serif; background: #ffffff; color: #1f2328; font-size: 14px; line-height: 1.6; }
+  .page { max-width: 760px; margin: 0 auto; padding: 40px 32px; }
+  h1 { font-size: 26px; font-weight: 700; color: #1f2328; margin-bottom: 4px; }
+  .subtitle { color: #57606a; font-size: 13px; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb; }
+  h2 { font-size: 13px; font-weight: 700; color: #3b82d4; letter-spacing: 0.08em; text-transform: uppercase; margin: 28px 0 10px; }
+  h3 { font-size: 14px; font-weight: 600; color: #1f2328; margin: 14px 0 4px; }
+  p { color: #1f2328; margin-bottom: 8px; }
+  ul { padding-left: 18px; margin-bottom: 8px; }
+  li { margin-bottom: 3px; color: #1f2328; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+  .card { background: #f7f8fa; border: 1px solid #e5e7eb; border-radius: 8px; padding: 14px 16px; }
+  .card h3 { margin-top: 0; }
+  .tag { display: inline-block; background: #e5e7eb; color: #1f2328; font-size: 11px; border-radius: 4px; padding: 2px 7px; margin: 2px 2px 2px 0; }
+  .tag.blue { background: #dbeafe; color: #1e40af; }
+  .tag.green { background: #dcfce7; color: #166534; }
+  .tag.orange { background: #ffedd5; color: #9a3412; }
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+  .flow-step { background: #f7f8fa; border: 1px solid #e5e7eb; border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 500; }
+  .arrow { color: #57606a; font-size: 16px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 8px; font-size: 13px; }
+  th { background: #f7f8fa; border: 1px solid #e5e7eb; padding: 7px 10px; text-align: left; font-weight: 600; color: #57606a; }
+  td { border: 1px solid #e5e7eb; padding: 7px 10px; vertical-align: top; }
+  .mono { font-family: "Consolas", "Courier New", monospace; font-size: 12px; background: #f7f8fa; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1px 5px; }
+  .section { margin-bottom: 24px; }
+  .footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid #e5e7eb; text-align: center; font-size: 12px; color: #57606a; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>♻ WasteWise</h1>
+  <p class="subtitle">AI-Powered Waste Intelligence — IBM Bob 2.0 Hackathon Project Reference</p>
+
+  
+  <div class="section">
+    <h2>Slide 1 — Project Overview</h2>
+    <h3>What is WasteWise?</h3>
+    <p>WasteWise is an AI-powered web application that identifies waste items from a photo and instantly provides detailed guidance on materials, recyclability, recovery options, disposal method, and environmental impact.</p>
+    <p><strong>Tagline:</strong> <em>"Waste in. Smart decisions out."</em></p>
+    <div style="margin-top:10px">
+      <span class="tag blue">IBM Bob 2.0</span>
+      <span class="tag blue">Local AI</span>
+      <span class="tag green">No Cloud Required</span>
+      <span class="tag green">No API Key</span>
+      <span class="tag orange">Hackathon Project</span>
+    </div>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 2 — Problem Statement</h2>
+    <ul>
+      <li>Most people don't know how to correctly dispose of waste items</li>
+      <li>Wrong disposal leads to recycling contamination, landfill overload, and environmental harm</li>
+      <li>Existing guidance is text-heavy, hard to find, and not personalised to the actual item</li>
+      <li><strong>WasteWise solves this</strong> — upload a photo, get instant expert guidance</li>
+    </ul>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 3 — How It Works (User Flow)</h2>
+    <div class="flow">
+      <div class="flow-step">📸 User uploads image</div>
+      <span class="arrow">→</span>
+      <div class="flow-step">Flask receives &amp; saves it</div>
+      <span class="arrow">→</span>
+      <div class="flow-step">moondream AI describes image</div>
+      <span class="arrow">→</span>
+      <div class="flow-step">Python maps to waste profile</div>
+      <span class="arrow">→</span>
+      <div class="flow-step">UI renders result tabs</div>
+    </div>
+    <p style="margin-top:8px;color:#57606a;font-size:13px">Total time from upload to result: ~15–20 seconds on CPU. No internet required after setup.</p>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 4 — Technology Stack</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Backend</h3>
+        <ul>
+          <li><strong>Python 3</strong> — core language</li>
+          <li><strong>Flask</strong> — web server &amp; REST API</li>
+          <li><strong>requests</strong> — HTTP calls to Ollama</li>
+          <li><strong>base64</strong> — image encoding (stdlib)</li>
+          <li><strong>json, os</strong> — stdlib only</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Frontend</h3>
+        <ul>
+          <li><strong>HTML5</strong> — semantic structure</li>
+          <li><strong>CSS3</strong> — dark-theme UI, animations</li>
+          <li><strong>Vanilla JavaScript</strong> — async fetch, DOM rendering</li>
+          <li>No React, no frameworks, no build tools</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>AI Layer</h3>
+        <ul>
+          <li><strong>Ollama</strong> — local model runtime</li>
+          <li><strong>moondream</strong> — vision model (828 MB)</li>
+          <li>Runs 100% offline on CPU</li>
+          <li>REST API at localhost:11434</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>IBM Technologies</h3>
+        <ul>
+          <li><strong>IBM Bob 2.0</strong> — AI coding assistant (this IDE)</li>
+          <li><strong>IBM Granite Vision</strong> — designed as primary model</li>
+          <li>Bob used for all code generation, debugging, architecture</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 5 — Project File Structure</h2>
+    <table>
+      <tr><th>File</th><th>Purpose</th><th>Lines</th></tr>
+      <tr><td><span class="mono">app.py</span></td><td>Flask web server. Two routes: <span class="mono">GET /</span> serves the UI, <span class="mono">POST /analyze</span> accepts image, calls AI, returns JSON</td><td>57</td></tr>
+      <tr><td><span class="mono">ai_analyzer.py</span></td><td>All AI logic. Encodes image to base64, calls moondream via Ollama streaming API, maps description to structured waste profile</td><td>~280</td></tr>
+      <tr><td><span class="mono">templates/index.html</span></td><td>Full single-page UI: navbar, hero section, scanner/upload area, animated progress, 5-tab result panel, How It Works, Impact section, footer</td><td>795</td></tr>
+      <tr><td><span class="mono">static/style.css</span></td><td>Complete dark-theme styling. Responsive (mobile down to 550px). Scan-line animation, orbit animations, tab system, all card layouts</td><td>1084</td></tr>
+      <tr><td><span class="mono">static/script.js</span></td><td>Frontend logic: file upload, drag &amp; drop, 2-phase scan animation, async AI fetch, result rendering across all 5 tabs, error display</td><td>~910</td></tr>
+      <tr><td><span class="mono">requirements.txt</span></td><td>Only 2 dependencies: <span class="mono">flask</span> and <span class="mono">requests</span></td><td>2</td></tr>
+      <tr><td><span class="mono">uploads/</span></td><td>Temporary folder where uploaded images are saved before analysis</td><td>—</td></tr>
+    </table>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 6 — AI Analysis Pipeline (Technical Detail)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Step 1 — Image Description</h3>
+        <p>Image is base64-encoded and sent to moondream via Ollama's streaming chat API with the question: <em>"What object is shown in this image? Describe it in one sentence."</em></p>
+        <p>Uses streaming so the connection stays alive during CPU inference (~15s).</p>
+      </div>
+      <div class="card">
+        <h3>Step 2 — Profile Matching</h3>
+        <p>moondream's one-sentence answer is matched against keyword lists in Python. The matched profile contains all 13 structured fields the UI needs instantly — no second AI call.</p>
+        <p>8 waste categories + default fallback.</p>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 7 — Waste Categories Supported</h2>
+    <table>
+      <tr><th>Category</th><th>Keywords Detected</th><th>Disposal Guidance</th></tr>
+      <tr><td>Plastic Bottle</td><td>plastic bottle, water bottle, PET</td><td>Recycling stream</td></tr>
+      <tr><td>Glass Bottle / Jar</td><td>glass bottle, glass jar, glass container</td><td>Glass recycling bin</td></tr>
+      <tr><td>Metal Can</td><td>tin can, aluminium can, beer can, steel</td><td>Metal / dry recycling bin</td></tr>
+      <tr><td>Paper / Cardboard</td><td>paper, cardboard, newspaper, box, carton</td><td>Paper recycling bin</td></tr>
+      <tr><td>Electronic Device</td><td>phone, laptop, circuit, PCB, cable, charger</td><td>Authorised e-waste collection</td></tr>
+      <tr><td>Battery</td><td>battery, batteries, cell</td><td>Battery drop-off point</td></tr>
+      <tr><td>Food Waste</td><td>food, fruit, vegetable, meat, organic</td><td>Food waste / compost bin</td></tr>
+      <tr><td>Clothing / Textile</td><td>shirt, jeans, fabric, garment, shoe</td><td>Clothing bank / charity</td></tr>
+      <tr><td>Unknown</td><td>anything else</td><td>Check local guidelines</td></tr>
+    </table>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 8 — Result Tabs (What the User Sees)</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Overview Tab</h3>
+        <ul>
+          <li>Identified item name</li>
+          <li>Waste category</li>
+          <li>Primary material</li>
+          <li>Recovery status</li>
+          <li>Disposal method</li>
+          <li>AI confidence %</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Materials Tab</h3>
+        <ul>
+          <li>Material composition description</li>
+          <li>Each material: name, detail, type</li>
+        </ul>
+        <h3 style="margin-top:12px">Recovery Tab</h3>
+        <ul>
+          <li>Recoverable materials list</li>
+          <li>How each material is recovered</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Possible Uses Tab</h3>
+        <ul>
+          <li>What recovered materials become</li>
+          <li>Numbered list of real applications</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Disposal Tab</h3>
+        <ul>
+          <li>Recommended disposal stream</li>
+          <li>Step-by-step instructions</li>
+          <li>Safety warning</li>
+          <li>Environmental impact note</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 9 — Key Features</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>🔒 Fully Offline</h3>
+        <p>After setup, WasteWise needs no internet connection. All AI runs locally via Ollama. No data sent to any cloud.</p>
+      </div>
+      <div class="card">
+        <h3>💰 Zero Cost</h3>
+        <p>No API keys. No subscriptions. No credit card. No cloud account. Just Python, Flask, and Ollama.</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Fast Response</h3>
+        <p>15–20 seconds on CPU. moondream is purpose-built for fast image description. Profile matching is instant.</p>
+      </div>
+      <div class="card">
+        <h3>🛡️ Error Handling</h3>
+        <p>Friendly UI messages for: Ollama offline, wrong file type, model not installed, AI timeout, incomplete response.</p>
+      </div>
+      <div class="card">
+        <h3>📱 Responsive UI</h3>
+        <p>Works on mobile (550px breakpoint), tablet, and desktop. Drag-and-drop image upload supported.</p>
+      </div>
+      <div class="card">
+        <h3>🔬 Detailed Analysis</h3>
+        <p>Every scan returns: name, description, confidence, category, materials, recovery options, real-world uses, disposal steps, safety note, and environmental impact.</p>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 10 — IBM Bob's Role in Development</h2>
+    <ul>
+      <li><strong>Architecture design</strong> — Bob analysed the project structure and planned the entire AI integration workflow</li>
+      <li><strong>Code generation</strong> — All of <span class="mono">ai_analyzer.py</span> and all modifications to <span class="mono">app.py</span> and <span class="mono">script.js</span> were written by Bob</li>
+      <li><strong>Debugging</strong> — Bob diagnosed the "failed to fetch" timeout issue, the 88% animation problem, and the streaming fix</li>
+      <li><strong>Documentation</strong> — IBM documentation queried live by Bob to verify model availability and API syntax</li>
+      <li><strong>IBM technology verification</strong> — Bob confirmed watsonx.ai plan requirements, deprecated model status, and alternative paths</li>
+    </ul>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 11 — Setup &amp; Run (Demo Steps)</h2>
+    <table>
+      <tr><th>Step</th><th>Command</th></tr>
+      <tr><td>1. Install dependencies</td><td><span class="mono">pip install flask requests</span></td></tr>
+      <tr><td>2. Install Ollama</td><td>Download from ollama.com (no account needed)</td></tr>
+      <tr><td>3. Pull vision model</td><td><span class="mono">ollama pull moondream</span></td></tr>
+      <tr><td>4. Start Flask</td><td><span class="mono">python app.py</span></td></tr>
+      <tr><td>5. Open browser</td><td><span class="mono">http://127.0.0.1:5000</span></td></tr>
+      <tr><td>6. Upload image</td><td>Drag &amp; drop or click — result appears in ~15 seconds</td></tr>
+    </table>
+  </div>
+
+  
+  <div class="section">
+    <h2>Slide 12 — Future Scope</h2>
+    <ul>
+      <li>Integrate IBM watsonx.ai (granite3.2-vision) on a GPU machine for higher accuracy</li>
+      <li>Add location-aware disposal guidance using user's postcode / city</li>
+      <li>Scan history and personal waste tracking dashboard</li>
+      <li>Multi-item detection (more than one waste item per image)</li>
+      <li>Mobile app wrapper using the same Flask API</li>
+      <li>Community reporting — mark illegal dumpsites on a map</li>
+      <li>Carbon footprint savings calculator per scan</li>
+    </ul>
+  </div>
+
+  <div class="footer">Made with IBM Bob  |  WasteWise — IBM Bob 2.0 Hackathon</div>
+</div>
+</body>
+</html>

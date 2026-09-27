@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WasteWise | AI Waste Intelligence</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">♻</span>
+            <span>Waste<span class="blue">Wise</span></span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#scanner">Scan Waste</a>
+            <a href="#impact">Impact</a>
+        </div>
+
+        <button class="nav-button" onclick="scrollToScanner()">
+            Start Scanning
+        </button>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                <span class="pulse-dot"></span>
+                AI WASTE INTELLIGENCE
+            </div>
+
+            <h1>
+                Waste in.
+                <span>Smart decisions out.</span>
+            </h1>
+
+            <p>
+                Upload a waste image and let WasteWise analyze what it is,
+                what it is made of, what can be recovered, and how it
+                should be disposed.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn" onclick="scrollToScanner()">
+                    <span>⌕</span>
+                    Scan My Waste
+                </button>
+
+                <button class="secondary-btn" onclick="showHowItWorks()">
+                    How It Works
+                </button>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div>
+                    <strong>AI</strong>
+                    <small>Recognition</small>
+                </div>
+
+                <div>
+                    <strong>♻</strong>
+                    <small>Recovery</small>
+                </div>
+
+                <div>
+                    <strong>∞</strong>
+                    <small>Possibilities</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FUTURISTIC SCANNER VISUAL -->
+
+        <div class="hero-visual">
+
+            <div class="scanner-orbit orbit-one"></div>
+            <div class="scanner-orbit orbit-two"></div>
+            <div class="scanner-orbit orbit-three"></div>
+
+            <div class="scanner-core">
+
+                <div class="scanner-symbol">
+                    ♻
+                </div>
+
+                <div class="scanner-text">
+                    AI READY
+                </div>
+
+                <div class="scanner-status">
+                    WAITING FOR IMAGE
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= SCANNER ================= -->
+
+    <section class="scanner-section" id="scanner">
+
+        <div class="section-heading">
+
+            <div class="small-title">
+                <span class="pulse-dot"></span>
+                WASTE ANALYZER
+            </div>
+
+            <h2>
+                Scan <span>your waste.</span>
+            </h2>
+
+            <p>
+                Upload an image of the waste item you want WasteWise to analyze.
+            </p>
+
+        </div>
+
+
+        <!-- UPLOAD AREA -->
+
+        <div class="upload-box" id="uploadBox">
+
+            <div class="upload-icon">
+                ↑
+            </div>
+
+            <h3>Drop your waste image here</h3>
+
+            <p>
+                or choose an image from your device
+            </p>
+
+            <label class="upload-button">
+
+                Choose Image
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    hidden
+                >
+
+            </label>
+
+            <span class="file-info">
+                JPG, PNG, WEBP
+            </span>
+
+        </div>
+
+
+        <!-- IMAGE PREVIEW -->
+
+        <div class="preview-container" id="previewContainer">
+
+            <div class="preview-header">
+
+                <div>
+                    <span class="status-dot"></span>
+                    IMAGE RECEIVED
+                </div>
+
+                <button onclick="resetScanner()">
+                    Remove
+                </button>
+
+            </div>
+
+            <div class="preview-content">
+
+                <div class="image-wrapper">
+
+                    <img id="previewImage" alt="Uploaded waste">
+
+                    <div class="scan-line"></div>
+
+                    <div class="corner top-left"></div>
+                    <div class="corner top-right"></div>
+                    <div class="corner bottom-left"></div>
+                    <div class="corner bottom-right"></div>
+
+                </div>
+
+                <div class="scan-info">
+
+                    <div class="scan-label">
+                        AI ANALYSIS
+                    </div>
+
+                    <h3 id="scanMessage">
+                        Preparing analysis...
+                    </h3>
+
+                    <p id="scanSubMessage">
+                        Initializing waste intelligence engine
+                    </p>
+
+                    <div class="progress-container">
+
+                        <div class="progress-bar">
+                            <div id="progressBar"></div>
+                        </div>
+
+                        <span id="progressText">0%</span>
+
+                    </div>
+
+                    <div class="analysis-steps">
+
+                        <div id="step1">
+                            <span>○</span>
+                            Image received
+                        </div>
+
+                        <div id="step2">
+                            <span>○</span>
+                            Identifying waste
+                        </div>
+
+                        <div id="step3">
+                            <span>○</span>
+                            Analyzing materials
+                        </div>
+
+                        <div id="step4">
+                            <span>○</span>
+                            Generating guidance
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= RESULTS ================= -->
+
+        <div class="results-container" id="resultsContainer">
+
+            <div class="result-top">
+
+                <div>
+
+                    <div class="small-title">
+                        <span class="pulse-dot"></span>
+                        AI ANALYSIS COMPLETE
+                    </div>
+
+                    <h2 id="resultName">
+                        Plastic Bottle
+                    </h2>
+
+                    <p id="resultDescription">
+                        A commonly recyclable consumer packaging item.
+                    </p>
+
+                </div>
+
+                <div class="confidence-box">
+
+                    <span>CONFIDENCE</span>
+
+                    <strong id="confidenceValue">
+                        94%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RESULT TABS -->
+
+            <div class="result-tabs">
+
+                <button class="tab active"
+                        onclick="openTab('overview', this)">
+                    Overview
+                </button>
+
+                <button class="tab"
+                        onclick="openTab('materials', this)">
+                    Materials
+                </button>
+
+                <button class="tab"
+                        onclick="openTab('recovery', this)">
+                    Recovery
+                </button>
+
+                <button class="tab"
+                        onclick="openTab('uses', this)">
+                    Possible Uses
+                </button>
+
+                <button class="tab"
+                        onclick="openTab('disposal', this)">
+                    Disposal
+                </button>
+
+            </div>
+
+
+
+            <!-- OVERVIEW -->
+
+            <div class="tab-content active" id="overview">
+
+                <div class="result-grid">
+
+                    <div class="info-card">
+
+                        <div class="card-icon">🔍</div>
+
+                        <span>IDENTIFIED ITEM</span>
+
+                        <h3 id="overviewName">
+                            Plastic Bottle
+                        </h3>
+
+                        <p id="overviewCategory">
+                            Plastic / Packaging
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="card-icon">🧪</div>
+
+                        <span>PRIMARY MATERIAL</span>
+
+                        <h3 id="overviewMaterial">
+                            PET
+                        </h3>
+
+                        <p>
+                            Polyethylene terephthalate
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="card-icon">♻</div>
+
+                        <span>RECOVERY</span>
+
+                        <h3 id="overviewRecovery">
+                            Recyclable
+                        </h3>
+
+                        <p>
+                            Material recovery possible
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="card-icon">🗑</div>
+
+                        <span>DISPOSAL</span>
+
+                        <h3 id="overviewDisposal">
+                            Recycling
+                        </h3>
+
+                        <p>
+                            Follow local recycling rules
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MATERIALS -->
+
+            <div class="tab-content" id="materials">
+
+                <div class="detail-card">
+
+                    <div class="detail-title">
+                        <span>🧪</span>
+                        Material Composition
+                    </div>
+
+                    <p id="materialsDescription">
+                        The detected item is primarily composed of PET,
+                        a thermoplastic polymer commonly used in beverage
+                        and food packaging.
+                    </p>
+
+                    <div class="material-list" id="materialList">
+
+                        <div class="material-item">
+
+                            <div>
+                                <strong>PET</strong>
+                                <small>Primary material</small>
+                            </div>
+
+                            <span>Plastic</span>
+
+                        </div>
+
+                        <div class="material-item">
+
+                            <div>
+                                <strong>Cap / label</strong>
+                                <small>May contain different polymers</small>
+                            </div>
+
+                            <span>Component</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RECOVERY -->
+
+            <div class="tab-content" id="recovery">
+
+                <div class="detail-card">
+
+                    <div class="detail-title">
+                        <span>♻</span>
+                        Recoverable Materials
+                    </div>
+
+                    <p>
+                        Waste processing can recover useful materials
+                        depending on collection, sorting and recycling
+                        infrastructure.
+                    </p>
+
+                    <div class="recovery-grid" id="recoveryGrid">
+
+                        <div class="recovery-item">
+
+                            <strong>PET</strong>
+
+                            <span>
+                                Recycled plastic feedstock
+                            </span>
+
+                        </div>
+
+                        <div class="recovery-item">
+
+                            <strong>Plastic components</strong>
+
+                            <span>
+                                May be separately sorted
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- USES -->
+
+            <div class="tab-content" id="uses">
+
+                <div class="detail-card">
+
+                    <div class="detail-title">
+                        <span>💡</span>
+                        What Can Recovered Materials Become?
+                    </div>
+
+                    <p>
+                        Recovered materials can re-enter manufacturing
+                        processes and become new products.
+                    </p>
+
+                    <div class="uses-list" id="usesList">
+
+                        <div class="use-item">
+                            <span>01</span>
+                            <div>
+                                <strong>New containers</strong>
+                                <p>
+                                    Recycled plastic may be used as
+                                    feedstock for new products.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="use-item">
+                            <span>02</span>
+                            <div>
+                                <strong>Textile fibres</strong>
+                                <p>
+                                    Recycled PET can be processed into
+                                    polyester fibre.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="use-item">
+                            <span>03</span>
+                            <div>
+                                <strong>Packaging materials</strong>
+                                <p>
+                                    Recovered polymer can be used in
+                                    suitable packaging applications.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DISPOSAL -->
+
+            <div class="tab-content" id="disposal">
+
+                <div class="detail-card disposal-card">
+
+                    <div class="detail-title">
+                        <span>🗑</span>
+                        Recommended Disposal
+                    </div>
+
+                    <div class="disposal-main">
+
+                        <div class="disposal-icon">
+                            ♻
+                        </div>
+
+                        <div>
+
+                            <h3 id="disposalTitle">
+                                Recycling Stream
+                            </h3>
+
+                            <p id="disposalText">
+                                Empty and clean the item where appropriate,
+                                then place it in the appropriate recycling
+                                stream according to local collection rules.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="warning-box">
+
+                        <strong>⚠ Safety & Environmental Note</strong>
+
+                        <p id="safetyText">
+                            Do not burn plastic waste. Follow local waste
+                            collection and recycling requirements.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <button class="scan-again-btn" onclick="resetScanner()">
+                ↻ Scan Another Item
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+
+    <section class="how-section" id="how">
+
+        <div class="section-heading">
+
+            <div class="small-title">
+                HOW IT WORKS
+            </div>
+
+            <h2>
+                From image to <span>intelligence.</span>
+            </h2>
+
+        </div>
+
+        <div class="process-grid">
+
+            <div class="process-card">
+
+                <div class="process-number">01</div>
+
+                <h3>Upload</h3>
+
+                <p>
+                    Provide an image of the waste item.
+                </p>
+
+            </div>
+
+            <div class="process-card">
+
+                <div class="process-number">02</div>
+
+                <h3>Identify</h3>
+
+                <p>
+                    AI analyzes the visual characteristics of the item.
+                </p>
+
+            </div>
+
+            <div class="process-card">
+
+                <div class="process-number">03</div>
+
+                <h3>Understand</h3>
+
+                <p>
+                    Determine materials, recovery possibilities and
+                    potential applications.
+                </p>
+
+            </div>
+
+            <div class="process-card">
+
+                <div class="process-number">04</div>
+
+                <h3>Act</h3>
+
+                <p>
+                    Receive practical disposal and safety guidance.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= IMPACT ================= -->
+
+    <section class="impact-section" id="impact">
+
+        <div class="section-heading">
+
+            <div class="small-title">
+                WHY WASTEWISE
+            </div>
+
+            <h2>
+                Waste isn't always <span>worthless.</span>
+            </h2>
+
+            <p>
+                WasteWise helps reveal the material value hidden inside
+                everyday waste.
+            </p>
+
+        </div>
+
+        <div class="impact-grid">
+
+            <div class="impact-card">
+
+                <div>🤖</div>
+
+                <h3>AI Recognition</h3>
+
+                <p>
+                    Identify waste from images and understand its category.
+                </p>
+
+            </div>
+
+            <div class="impact-card">
+
+                <div>🧪</div>
+
+                <h3>Material Intelligence</h3>
+
+                <p>
+                    Explore what materials may be present in the item.
+                </p>
+
+            </div>
+
+            <div class="impact-card">
+
+                <div>♻</div>
+
+                <h3>Resource Recovery</h3>
+
+                <p>
+                    Discover materials that could potentially be recovered
+                    and reused.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="logo">
+            <span class="logo-icon">♻</span>
+            Waste<span class="blue">Wise</span>
+        </div>
+
+        <p>
+            AI-powered waste intelligence for a smarter circular future.
+        </p>
+
+        <span>
+            © 2026 WasteWise
+        </span>
+
+    </footer>
+
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
