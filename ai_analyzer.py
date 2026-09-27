@@ -511,13 +511,14 @@ def _match_profile(description: str) -> dict:
         # --- Metal Can (specific) ---
         (["tin can", "aluminium can", "beer can", "soda can", "energy drink can",
           "food can", "metal can", "steel can", "biscuit tin", "paint tin",
-          "empty tin", "tin"], "metal can"),
+          "empty tin", "tin", "coke", "cola", "diet coke", "pepsi", "sprite",
+          "fanta", "soft drink can", "beverage can", "energy drink",
+          "fizzy drink can", "coke can", "cola can"], "metal can"),
 
         # --- Plastic Bottle (specific) ---
         (["plastic bottle", "water bottle", "drink bottle", "pet bottle",
-          "hdpe bottle", "juice bottle", "milk bottle", "coke", "cola",
-          "soda bottle", "soft drink", "beverage bottle", "diet coke",
-          "pepsi", "sprite", "fanta"], "plastic bottle"),
+          "hdpe bottle", "juice bottle", "milk bottle",
+          "soda bottle", "soft drink bottle", "beverage bottle"], "plastic bottle"),
 
         # --- Plastic (general — kept broad, checked after specifics) ---
         (["plastic bag", "plastic film", "plastic wrap", "plastic sheet",
