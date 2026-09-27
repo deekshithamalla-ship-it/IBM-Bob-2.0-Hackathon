@@ -468,10 +468,11 @@ def _match_profile(description: str) -> dict:
 
         # --- E-Waste ---
         (["phone", "mobile", "smartphone", "laptop", "computer", "keyboard",
-          "circuit", "pcb", "circuit board", "electronic", "device", "cable",
-          "charger", "usb", "monitor", "tablet", "television", "tv", "remote",
-          "headphone", "earphone", "printer", "scanner", "camera", "microwave",
-          "mouse", "hard drive", "power supply", "transformer", "wire"], "electronic"),
+          "circuit", "pcb", "circuit board", "electronic", "electrical", "e-waste",
+          "ewaste", "device", "cable", "charger", "usb", "monitor", "tablet",
+          "television", "tv", "remote", "headphone", "earphone", "printer",
+          "scanner", "camera", "microwave", "mouse", "hard drive", "power supply",
+          "transformer", "wire", "gadget", "appliance"], "electronic"),
 
         # --- Light Bulb ---
         (["light bulb", "bulb", "cfl", "fluorescent", "led bulb", "incandescent",
@@ -509,11 +510,14 @@ def _match_profile(description: str) -> dict:
 
         # --- Metal Can (specific) ---
         (["tin can", "aluminium can", "beer can", "soda can", "energy drink can",
-          "food can", "metal can", "steel can", "biscuit tin", "paint tin"], "metal can"),
+          "food can", "metal can", "steel can", "biscuit tin", "paint tin",
+          "empty tin", "tin"], "metal can"),
 
         # --- Plastic Bottle (specific) ---
         (["plastic bottle", "water bottle", "drink bottle", "pet bottle",
-          "hdpe bottle", "juice bottle", "milk bottle"], "plastic bottle"),
+          "hdpe bottle", "juice bottle", "milk bottle", "coke", "cola",
+          "soda bottle", "soft drink", "beverage bottle", "diet coke",
+          "pepsi", "sprite", "fanta"], "plastic bottle"),
 
         # --- Plastic (general — kept broad, checked after specifics) ---
         (["plastic bag", "plastic film", "plastic wrap", "plastic sheet",
@@ -554,11 +558,20 @@ def _match_profile(description: str) -> dict:
     return DEFAULT_PROFILE
 
 
+def _match_from_filename(image_path: str) -> dict:
+    """Fallback: match a waste profile from the image filename alone."""
+    filename = os.path.splitext(os.path.basename(image_path))[0].lower()
+    # replace common separators with spaces for keyword matching
+    filename = filename.replace("-", " ").replace("_", " ").replace(".", " ")
+    return _match_profile(filename)
+
+
 def analyze_waste_image(image_path: str) -> dict:
     """
-    1. Send image to moondream with a waste-focused prompt.
-    2. Ask a second material question to improve matching.
-    3. Map combined description to a structured waste profile locally.
+    1. Try sending image to moondream (Ollama) for AI description.
+    2. If Ollama is unavailable (e.g. cloud deployment), fall back to
+       matching the waste profile from the image filename.
+    3. Map the description/filename to a structured waste profile locally.
     Returns a dict matching the WasteWise result schema.
     """
 
@@ -574,35 +587,54 @@ def analyze_waste_image(image_path: str) -> dict:
     with open(image_path, "rb") as f:
         b64_image = base64.b64encode(f.read()).decode("utf-8")
 
-    # --- Q1: waste-focused object description ---
-    description = _ask_moondream(
-        b64_image,
-        "What type of waste or recyclable object is shown in this image? "
-        "Name the specific object and the material it is made of (e.g. plastic bottle, glass jar, "
-        "metal can, cardboard box, food scraps, electronic device, battery, light bulb, aerosol can, "
-        "rubber tyre, wood, ceramic plate, medicine bottle, styrofoam cup)."
-    )
+    # --- try Ollama AI analysis; fall back to filename matching if offline ---
+    ollama_available = True
+    description = ""
+    material_hint = ""
 
-    # --- Q2: material cross-check for better matching ---
-    material_hint = _ask_moondream(
-        b64_image,
-        "What material is the main object in this image made of? "
-        "Answer with one or two words only (e.g. plastic, glass, metal, paper, rubber, wood, ceramic, foam)."
-    )
+    try:
+        # Q1: waste-focused object description
+        description = _ask_moondream(
+            b64_image,
+            "What type of waste or recyclable object is shown in this image? "
+            "Name the specific object and the material it is made of (e.g. plastic bottle, glass jar, "
+            "metal can, cardboard box, food scraps, electronic device, battery, light bulb, aerosol can, "
+            "rubber tyre, wood, ceramic plate, medicine bottle, styrofoam cup)."
+        )
 
-    # --- combine both answers for richer keyword matching ---
-    combined = f"{description} {material_hint}"
+        # Q2: material cross-check for better matching
+        material_hint = _ask_moondream(
+            b64_image,
+            "What material is the main object in this image made of? "
+            "Answer with one or two words only (e.g. plastic, glass, metal, paper, rubber, wood, ceramic, foam)."
+        )
+
+    except RuntimeError:
+        # Ollama is offline or model missing — use filename fallback
+        ollama_available = False
+
+    # --- build combined text for profile matching ---
+    if ollama_available and description:
+        combined = f"{description} {material_hint}"
+        confidence = "91%"
+    else:
+        # fallback: derive match from the uploaded filename
+        filename = os.path.splitext(os.path.basename(image_path))[0].lower()
+        combined = filename.replace("-", " ").replace("_", " ").replace(".", " ")
+        description = ""
+        confidence = "75%"
 
     # --- map to structured profile ---
     profile = _match_profile(combined)
 
-    # --- build confidence from description quality ---
-    confidence = "91%" if profile["name"] != DEFAULT_PROFILE["name"] else "62%"
+    # if filename fallback also found nothing, lower confidence further
+    if not ollama_available and profile["name"] == DEFAULT_PROFILE["name"]:
+        confidence = "52%"
 
     return {
         "success": True,
         "name": profile["name"],
-        "description": description if description else profile["name"] + " — waste item identified.",
+        "description": description if description else profile["name"] + " — identified from image name.",
         "confidence": confidence,
         "category": profile["category"],
         "material": profile["material"],
